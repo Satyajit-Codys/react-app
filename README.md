@@ -4,5 +4,5 @@
 - [x] API integration **_(enhancement)_**
       The box containing text "Replace this with the data coming from API!" should display data (text) fetched from API.
 
-- [x] Bugfixes **_(bugfix)_**
+- [x] :heavy*check_mark: Bugfixes \*\**(bugfix)\_\*\*
       All the errors popping in console should be dealth with! Ideally no errors should there be in the console
