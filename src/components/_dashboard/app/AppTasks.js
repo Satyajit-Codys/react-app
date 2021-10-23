@@ -68,14 +68,15 @@ export default function AppTasks() {
   ]);
 
   function addTasks(){
+    if(todoValue.length === 0) return
     const newTasks = [...tasks];
     newTasks.push(todoValue);
     setTasks(newTasks);
+    settodoValue("");
   }
   
   function handleChange(event){
     settodoValue(event.target.value);
-    console.log(event.target);
   }
   const formik = useFormik({
     initialValues: {
@@ -95,8 +96,9 @@ export default function AppTasks() {
       <Box sx={{ px: 3, py: 1 }}>
         <FormikProvider value={formik}>
           <Form autoComplete="off" noValidate onSubmit={handleSubmit}>
-            {tasks.map((task) => (
+            {tasks.map((task,id) => (
               <TaskItem
+                key = {id}
                 task={task}
                 formik={formik}
                 checked={values.checked.includes(task)}
@@ -111,10 +113,11 @@ export default function AppTasks() {
           required
           id="outlined-required"
           label="Required"
-          onChange = { () => {console.log();}}
+          onChange = {handleChange}
+          // onChange={() => console.log('helo')}
           value = {todoValue}
         />
-    <button variant="contained" onclick={addTasks}> Add tasks </button>
+    <Button variant="contained" onClick={addTasks}> Add tasks </Button>
     </div>
     </>
   );
